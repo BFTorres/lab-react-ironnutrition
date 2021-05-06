@@ -8,28 +8,36 @@ import AddForm from './components/AddForm';
 
 class App extends Component {
   state = {
-    food: foods,
-    filteredFoods: foods,
+    foods: foods,
     totalFood: [],
     showForm: false,
+    filteredFoods: foods,
   }
+
+  this.setState({})
   handleSubmit = (e) => {
     e.preventDefault();
+    // forms creation html, 
   
-
+    //event.target.calories.values
 
   const { name, calories } = e.target;
   let newFood = {
     name: name.value,
     calories: calories.value,
+    image: image.value
   }
   
+  this.setState({
+    foods: [newFood, ...this.state.foods],
+    filteredFoods: 
+  })
+}
 
-
-  this.setState({ showForm: false }, () => {
+  /*this.setState({ showForm: false }, () => {
     this.handleAddFood(newFood);
     });
-  };
+  };*/
 
   handleAddFood = (food) => {
 
@@ -39,15 +47,22 @@ class App extends Component {
   };
 
   handleSearch = (e) => {
-    let input = e.target.value;
-    const { allFood } = this.state;
+    let searchText = e.target.value;
+    const { foods } = this.state;
     let filteredFood = allFood.filter((singleFood) => {
-      return singleFood.name.toLowerCase().includes(input.toLowerCase());
+      return singleFood.name.toLowerCase().startsWith(searchText.toLowerCase());
+      //startsWith!!! or includes
     });
     this.setState({
-      filteredFood: filteredFood,
+      filteredFood: filterdFood,
+
+
+      // never update foods, only the filtered
     });
   };
+
+
+
   handleAddTotal = (food, quantity)=>{
     let myFood = {...food, quantity}
 
@@ -61,17 +76,22 @@ class App extends Component {
   };
 
 render() {
-    const { totalFood, filteredFoods } = this.state;
+    const { showForm, filteredFoods } = this.state;
+      //NOT FOODS! it loops through filtered foods, not the original foods
+
+
     return (
       <div>
+
         {this.state.showForm ? (
-          <AddForm food={this.handleSubmit} />
+          <AddForm onSubmit={this.handleSubmit} />
+          //onSubmit can be called whatever you want
         ) : (
           <button onClick={this.handleShowForm}>Show form</button>
         )}
 
-        {filteredFoods.map((singleFood, index) => {
-          return <FoodBox singleFood={singleFood} />;
+        {filteredFoods.map((food, index) => {
+          return <FoodBox key={index} food={food}/>;
         })}
       </div>
     );

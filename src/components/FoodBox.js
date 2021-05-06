@@ -20,14 +20,14 @@ render() {
         <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
-              <img src={image} />
+              <img src={food.image} />
             </figure>
           </div>
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{name}</strong> <br />
-                <small>{calories}</small>
+                <strong>{food.name}</strong> <br />
+                <small>{food.calories}</small>
               </p>
             </div>
           </div>

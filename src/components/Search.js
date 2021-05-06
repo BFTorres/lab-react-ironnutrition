@@ -1,11 +1,18 @@
 import React, {Component} from 'react'
-import 'bulma/css/bulma.css';
+
 
 class Search extends Component {
     render(){
-        return (
-            <textarea onChange={this.props.onSearch} label="Search" className="textarea" placeholder="Search for a food"></textarea>
-        )
+
+const { onSearch } = this.props
+
+        return 
+        
+
+
+        
+            <input onChange={onSearchs.} label="Search" className="textarea" placeholder="Search for a food"></textarea>
+        
     }
 }
 
