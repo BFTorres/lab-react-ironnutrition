@@ -7,11 +7,8 @@ class Search extends Component {
 const { onSearch } = this.props
 
         return 
-        
-
-
-        
-            <input onChange={onSearchs.} label="Search" className="textarea" placeholder="Search for a food"></textarea>
+    
+            <input onChange={onSearch} type="Text" className="textarea" placeholder="Search for a food"></input>
         
     }
 }

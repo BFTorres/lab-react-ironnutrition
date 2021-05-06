@@ -30,7 +30,8 @@ class App extends Component {
   
   this.setState({
     foods: [newFood, ...this.state.foods],
-    filteredFoods: 
+    filteredFoods: [newFood, ...this.state.foods]
+    showForm: false
   })
 }
 
@@ -71,7 +72,7 @@ class App extends Component {
     }) 
   }
 
-  handleShowForm = () => {
+  handleClick= () => {
     this.setState({ showForm: true });
   };
 
@@ -82,12 +83,13 @@ render() {
 
     return (
       <div>
-
-        {this.state.showForm ? (
+        <Search />
+        {
+          showForm ? (
           <AddForm onSubmit={this.handleSubmit} />
           //onSubmit can be called whatever you want
         ) : (
-          <button onClick={this.handleShowForm}>Show form</button>
+          <button onClick={this.handleClick}>Show form</button>
         )}
 
         {filteredFoods.map((food, index) => {
